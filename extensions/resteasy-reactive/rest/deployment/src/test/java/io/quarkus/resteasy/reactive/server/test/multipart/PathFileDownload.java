@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import jakarta.ws.rs.core.MultivaluedMap;
+
 import org.jboss.resteasy.reactive.multipart.FileDownload;
 
 public class PathFileDownload implements FileDownload {
@@ -51,6 +53,11 @@ public class PathFileDownload implements FileDownload {
 
     @Override
     public String charSet() {
+        return null;
+    }
+
+    @Override
+    public MultivaluedMap<String, String> getHeaders() {
         return null;
     }
 }

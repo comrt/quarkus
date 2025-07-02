@@ -2,6 +2,8 @@ package org.jboss.resteasy.reactive.multipart;
 
 import java.nio.file.Path;
 
+import jakarta.ws.rs.core.MultivaluedMap;
+
 /**
  * Represents a file-part (upload or download) from an HTTP multipart form submission.
  */
@@ -36,4 +38,9 @@ public interface FilePart {
      * @return the charset of the upload.
      */
     String charSet();
+
+    /**
+     * @return The headers that were present in the form submission.
+     */
+    MultivaluedMap<String, String> getHeaders();
 }

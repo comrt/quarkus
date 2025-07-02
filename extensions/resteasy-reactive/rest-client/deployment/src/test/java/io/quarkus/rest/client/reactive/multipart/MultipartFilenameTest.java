@@ -24,6 +24,7 @@ import jakarta.ws.rs.FormParam;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MultivaluedMap;
 
 import org.eclipse.microprofile.rest.client.RestClientBuilder;
 import org.jboss.resteasy.reactive.MultipartForm;
@@ -107,6 +108,11 @@ public class MultipartFilenameTest {
             @Override
             public String charSet() {
                 return "";
+            }
+
+            @Override
+            public MultivaluedMap<String, String> getHeaders() {
+                return null;
             }
         };
         assertThat(client.postMultipartFileUpload(form)).isEqualTo(file.getName());

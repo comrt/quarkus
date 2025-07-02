@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MultivaluedMap;
 
 /**
  * Used when a Resource method needs to return a multipart output
@@ -39,13 +40,27 @@ public final class MultipartFormDataOutput {
         return addFormData(key, entity, null, mediaType);
     }
 
+    public PartItem addFormData(String key, Object entity, MediaType mediaType, MultivaluedMap<String, Object> headers) {
+        return addFormData(key, entity, null, mediaType, headers);
+    }
+
     public PartItem addFormData(String key, Object entity, String genericType, MediaType mediaType) {
-        PartItem part = new PartItem(entity, genericType, mediaType);
+        return addFormData(key, entity, genericType, mediaType);
+    }
+
+    public PartItem addFormData(String key, Object entity, String genericType, MediaType mediaType,
+            MultivaluedMap<String, Object> headers) {
+        PartItem part = new PartItem(entity, genericType, mediaType, null, headers);
         return addFormData(key, part);
     }
 
     public PartItem addFormData(String key, Object entity, MediaType mediaType, String filename) {
-        PartItem part = new PartItem(entity, null, mediaType, filename);
+        return addFormData(key, entity, mediaType, filename);
+    }
+
+    public PartItem addFormData(String key, Object entity, MediaType mediaType, String filename,
+            MultivaluedMap<String, Object> headers) {
+        PartItem part = new PartItem(entity, null, mediaType, filename, headers);
         return addFormData(key, part);
     }
 

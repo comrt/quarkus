@@ -13,6 +13,7 @@ import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MultivaluedMap;
 
 import org.eclipse.microprofile.rest.client.RestClientBuilder;
 import org.eclipse.microprofile.rest.client.annotation.RegisterProvider;
@@ -110,6 +111,11 @@ public class MultipartDetectionTest {
             @Override
             public String charSet() {
                 return "";
+            }
+
+            @Override
+            public MultivaluedMap<String, String> getHeaders() {
+                return null;
             }
         }))
                 .isEqualTo("Foo " + file.getName() + " Hello");

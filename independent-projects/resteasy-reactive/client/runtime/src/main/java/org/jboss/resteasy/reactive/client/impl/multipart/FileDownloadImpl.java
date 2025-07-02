@@ -3,6 +3,8 @@ package org.jboss.resteasy.reactive.client.impl.multipart;
 import java.io.IOException;
 import java.nio.file.Path;
 
+import jakarta.ws.rs.core.MultivaluedMap;
+
 import org.jboss.resteasy.reactive.multipart.FileDownload;
 
 import io.netty.handler.codec.http.multipart.FileUpload;
@@ -48,5 +50,10 @@ public class FileDownloadImpl implements FileDownload {
     @Override
     public String charSet() {
         return file.getCharset().name();
+    }
+
+    @Override
+    public MultivaluedMap<String, String> getHeaders() {
+        throw new UnsupportedOperationException("returning headers of a downloaded file is not supported");
     }
 }
