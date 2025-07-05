@@ -32,6 +32,7 @@ import org.jboss.resteasy.reactive.PartFilename;
 import org.jboss.resteasy.reactive.PartType;
 import org.jboss.resteasy.reactive.RestForm;
 import org.jboss.resteasy.reactive.client.impl.multipart.PausableHttpPostRequestEncoder;
+import org.jboss.resteasy.reactive.common.util.QuarkusMultivaluedHashMap;
 import org.jboss.resteasy.reactive.multipart.FileUpload;
 import org.jboss.resteasy.reactive.server.multipart.FormValue;
 import org.jboss.resteasy.reactive.server.multipart.MultipartFormDataInput;
@@ -112,7 +113,7 @@ public class MultipartFilenameTest {
 
             @Override
             public MultivaluedMap<String, String> getHeaders() {
-                return null;
+                return new QuarkusMultivaluedHashMap<>();
             }
         };
         assertThat(client.postMultipartFileUpload(form)).isEqualTo(file.getName());

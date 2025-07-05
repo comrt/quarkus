@@ -1,5 +1,7 @@
 package org.jboss.resteasy.reactive.multipart;
 
+import jakarta.ws.rs.core.MultivaluedMap;
+
 import java.nio.file.Path;
 
 /**
@@ -18,4 +20,9 @@ public interface FileUpload extends FilePart {
     default Path uploadedFile() {
         return filePath();
     }
+
+    /**
+     * @return The headers that were present in the form submission.
+     */
+    MultivaluedMap<String, String> getHeaders();
 }

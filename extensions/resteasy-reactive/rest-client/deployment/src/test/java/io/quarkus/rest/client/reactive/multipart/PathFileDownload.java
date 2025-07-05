@@ -55,9 +55,4 @@ public class PathFileDownload implements FileDownload {
     public String charSet() {
         return null;
     }
-
-    @Override
-    public MultivaluedMap<String, String> getHeaders() {
-        return null;
-    }
 }

@@ -19,6 +19,7 @@ import org.eclipse.microprofile.rest.client.RestClientBuilder;
 import org.eclipse.microprofile.rest.client.annotation.RegisterProvider;
 import org.jboss.resteasy.reactive.PartType;
 import org.jboss.resteasy.reactive.RestForm;
+import org.jboss.resteasy.reactive.common.util.QuarkusMultivaluedHashMap;
 import org.jboss.resteasy.reactive.multipart.FileUpload;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
@@ -115,7 +116,7 @@ public class MultipartDetectionTest {
 
             @Override
             public MultivaluedMap<String, String> getHeaders() {
-                return null;
+                return new QuarkusMultivaluedHashMap<>();
             }
         }))
                 .isEqualTo("Foo " + file.getName() + " Hello");
