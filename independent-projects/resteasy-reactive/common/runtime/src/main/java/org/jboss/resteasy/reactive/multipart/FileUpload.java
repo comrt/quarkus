@@ -1,8 +1,8 @@
 package org.jboss.resteasy.reactive.multipart;
 
-import jakarta.ws.rs.core.MultivaluedMap;
-
 import java.nio.file.Path;
+
+import jakarta.ws.rs.core.MultivaluedMap;
 
 /**
  * Represent a file that has been uploaded.
