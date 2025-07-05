@@ -9,6 +9,8 @@ import java.util.Map;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.MultivaluedMap;
 
+import org.jboss.resteasy.reactive.common.util.QuarkusMultivaluedHashMap;
+
 /**
  * Used when a Resource method needs to return a multipart output
  */
@@ -37,7 +39,7 @@ public final class MultipartFormDataOutput {
     }
 
     public PartItem addFormData(String key, Object entity, MediaType mediaType) {
-        return addFormData(key, entity, null, mediaType);
+        return addFormData(key, entity, null, mediaType, new QuarkusMultivaluedHashMap<>());
     }
 
     public PartItem addFormData(String key, Object entity, MediaType mediaType, MultivaluedMap<String, Object> headers) {
@@ -45,7 +47,7 @@ public final class MultipartFormDataOutput {
     }
 
     public PartItem addFormData(String key, Object entity, String genericType, MediaType mediaType) {
-        return addFormData(key, entity, genericType, mediaType);
+        return addFormData(key, entity, genericType, mediaType, new QuarkusMultivaluedHashMap<>());
     }
 
     public PartItem addFormData(String key, Object entity, String genericType, MediaType mediaType,
@@ -55,7 +57,7 @@ public final class MultipartFormDataOutput {
     }
 
     public PartItem addFormData(String key, Object entity, MediaType mediaType, String filename) {
-        return addFormData(key, entity, mediaType, filename);
+        return addFormData(key, entity, mediaType, filename, new QuarkusMultivaluedHashMap<>());
     }
 
     public PartItem addFormData(String key, Object entity, MediaType mediaType, String filename,
